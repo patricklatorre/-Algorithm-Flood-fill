@@ -22,6 +22,9 @@
 hs_err_pid*
 
 # IDE Files
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 *.iws
+**/.idea/*.iws
 workspace.xml
 tasks.xml
