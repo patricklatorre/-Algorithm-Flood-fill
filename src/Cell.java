@@ -7,7 +7,7 @@ public class Cell
 	public Cell(int y, int x, int destY, int destX) {
 		this.x = x;
 		this.y = y;
-		this.distance = destX-x + destY-y;
+		this.distance = Math.abs(destX-x) + Math.abs(destY-y);
 	}
 
 	public int getX() {

@@ -22,16 +22,21 @@ public class AStarBonus
 		System.out.println("-------------------------------------------------------");
 
 		int[][] matrix = {
-				{0, 0, 0, 2, 0},
-				{0, 0, 0, 2, 0},
-				{0, 0, 0, 2, 0},
+				{0, 2, 0, 2, 0},
+				{0, 2, 0, 0, 0},
+				{0, 0, 2, 0, 0},
 				{0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0},
 		};
 
-		DFS(source[1], source[0], matrix, 4, 5, dest[1], dest[0]);
-		printPath();
+		boolean found = DFS(source[1], source[0], matrix, 4, 5, dest[1], dest[0]);
+		if( !found )
+			System.out.println("Destination is not accessible.");
+		else {
+			System.out.println("\n\n[PATH]");
+			printPath();
+		}
 	}
 
 	public static boolean DFS(int y, int x, int[][] matrix, int n, int m, int dy, int dx) {
@@ -46,13 +51,13 @@ public class AStarBonus
 			for(int i = 0; i <= m; i++) {
 				for (int j = 0; j <= n; j++) {
 					if (i == dy && j == dx)
-						System.out.print("E\t\t");
+						System.out.print("E\t");
 					else if (matrix[i][j] == 1)
-						System.out.print("P\t\t");
+						System.out.print("P\t");
 					else if (matrix[i][j] == 2)
-						System.out.print("*\t\t");
+						System.out.print("*\t");
 					else if (matrix[i][j] == 0)
-						System.out.print(".\t\t");
+						System.out.print(".\t");
 				}
 				System.out.println();
 			}
@@ -69,13 +74,13 @@ public class AStarBonus
 			for (int i = 0; i <= m; i++) {
 				for (int j = 0; j <= n; j++) {
 					if (i == dy && j == dx)
-						System.out.print("E\t\t");
+						System.out.print("E\t");
 					else if (matrix[i][j] == 1)
-						System.out.print("P\t\t");
+						System.out.print("P\t");
 					else if (matrix[i][j] == 2)
-						System.out.print("*\t\t");
+						System.out.print("*\t");
 					else if (matrix[i][j] == 0)
-						System.out.print(".\t\t");
+						System.out.print(".\t");
 				}
 				System.out.println();
 			}
