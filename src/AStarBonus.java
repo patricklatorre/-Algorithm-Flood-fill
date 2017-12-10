@@ -16,7 +16,7 @@ public class AStarBonus
 		System.out.println("-------------------------------------------------------");
 
 		int[] dest = new int[2];
-		System.out.print("Source XY coordinates: ");
+		System.out.print("Destination XY coordinates: ");
 		dest[0] = sc.nextInt();
 		dest[1] = sc.nextInt();
 		System.out.println("-------------------------------------------------------");

@@ -2,12 +2,12 @@ public class Cell
 {
 	private int x;
 	private int y;
-	private int distance;
+	private double distance;
 
 	public Cell(int y, int x, int destY, int destX) {
 		this.x = x;
 		this.y = y;
-		this.distance = Math.abs(destX-x) + Math.abs(destY-y);
+		this.distance = Math.hypot(destX-x, destY-y);
 	}
 
 	public int getX() {
@@ -26,7 +26,7 @@ public class Cell
 		this.y = y;
 	}
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
