@@ -1,4 +1,4 @@
-public class Driver
+public class FloodFill
 {
 	public static void main(String[] args) {
 		int[][] matrix = {
@@ -18,25 +18,34 @@ public class Driver
 				{false, false, false, false, false},
 				{false, false, false, false, false},
 		};
-
-		DFS(0, 0, visited, matrix, 4, 5);
+		DFS(4, 4, visited, matrix, 5, 4);
 	}
 
 	public static void DFS(int x, int y, boolean[][] visited, int[][] matrix, int n, int m) {
-		if(x >= n || y >= m)
+		if(x > n || y > m) {
+			System.out.println("GREATER than margin");
 			return;
-		if(x < 0 || y < 0)
+		}
+		if(x < 0 || y < 0) {
+			System.out.println("LESSER than margin");
 			return;
-		if(visited[x][y] == true)
+		}
+		if(visited[x][y] == true) {
+			System.out.println("already visited");
 			return;
+		}
 		else {
 			visited[x][y] = true;
-			matrix[x][y] = 2;
+			matrix[x][y] = 1;
 		}
 
 		for(int i = 0; i <= n; i++) {
 			for (int j = 0; j <= m; j++)
-				System.out.print("[" +matrix[j][i]+ "]\t\t");
+				if( matrix[i][j] == 1 )
+					System.out.print("X\t\t");
+				else if( matrix[i][j] == 0 )
+					System.out.print(".\t\t");
+
 			System.out.println();
 		}
 		System.out.println("-------------------------------------------------------");
