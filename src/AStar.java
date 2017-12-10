@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+import model.Cell;
+
 import java.util.Scanner;
 
 public class AStar
 {
-	private List<Cell> foundPath = new ArrayList<>();
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 

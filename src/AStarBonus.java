@@ -1,10 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
+import model.Cell;
+import model.DefaultStack;
+import model.OpenStack;
+
 import java.util.Scanner;
 
 public class AStarBonus
 {
-	private static List<Cell> foundPath = new ArrayList<>();
+	private static DefaultStack foundPath = new OpenStack();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -47,7 +49,7 @@ public class AStarBonus
 			return false;
 		}
 		if( y == dy && x == dx ) {
-			foundPath.add(new Cell(y, x, dy, dx));
+			foundPath.push(new Cell(y, x, dy, dx));
 			for(int i = 0; i <= m; i++) {
 				for (int j = 0; j <= n; j++) {
 					if (i == dy && j == dx)
@@ -97,7 +99,7 @@ public class AStarBonus
 			for (Cell nextPath : pathQueue) {
 				found = DFS(nextPath.getY(), nextPath.getX(), matrix, n, m, dy, dx);
 				if( found ) {
-					foundPath.add(new Cell(y, x, dy, dx));
+					foundPath.push(new Cell(y, x, dy, dx));
 					return true;
 				}
 			}
@@ -126,8 +128,10 @@ public class AStarBonus
 	}
 
 	static void printPath() {
-		for(int i = foundPath.size()-1; i >= 0; i--) {
-			System.out.println("(" +foundPath.get(i).getX()+ ", " +foundPath.get(i).getY()+ ")");
+
+		while(!foundPath.isEmpty()){
+			Cell coor = foundPath.pop();
+			System.out.println("(" +coor.getX()+ ", " +coor.getY()+ ")");
 		}
 	}
 }
