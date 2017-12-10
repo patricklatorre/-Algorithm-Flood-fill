@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AStar
+public class AStarBonus
 {
-	private List<Cell> foundPath = new ArrayList<>();
+	private static List<Cell> foundPath = new ArrayList<>();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -31,6 +31,7 @@ public class AStar
 		};
 
 		DFS(source[1], source[0], matrix, 4, 5, dest[1], dest[0]);
+		printPath();
 	}
 
 	public static boolean DFS(int y, int x, int[][] matrix, int n, int m, int dy, int dx) {
@@ -41,6 +42,7 @@ public class AStar
 			return false;
 		}
 		if( y == dy && x == dx ) {
+			foundPath.add(new Cell(y, x, dy, dx));
 			for(int i = 0; i <= m; i++) {
 				for (int j = 0; j <= n; j++) {
 					if (i == dy && j == dx)
@@ -90,7 +92,7 @@ public class AStar
 			for (Cell nextPath : pathQueue) {
 				found = DFS(nextPath.getY(), nextPath.getX(), matrix, n, m, dy, dx);
 				if( found ) {
-					System.out.println();
+					foundPath.add(new Cell(y, x, dy, dx));
 					return true;
 				}
 			}
@@ -115,6 +117,12 @@ public class AStar
 				}
 
 			}
+		}
+	}
+
+	static void printPath() {
+		for(int i = foundPath.size()-1; i >= 0; i--) {
+			System.out.println("(" +foundPath.get(i).getX()+ ", " +foundPath.get(i).getY()+ ")");
 		}
 	}
 }

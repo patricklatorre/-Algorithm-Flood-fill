@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class FloodFill
 {
+	static int filledCells = 0;
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
@@ -29,6 +31,8 @@ public class FloodFill
 				{false, false, false, false, false},
 		};
 		DFS(source[1], source[0], visited, matrix, 4, 5);
+
+		System.out.println("Filled cells: " + filledCells);
 	}
 
 	public static void DFS(int y, int x, boolean[][] visited, int[][] matrix, int n, int m) {
@@ -50,6 +54,7 @@ public class FloodFill
 		else {
 			visited[y][x] = true;
 			matrix[y][x] = 1;
+			filledCells++;
 		}
 
 		for(int i = 0; i <= m; i++) {
