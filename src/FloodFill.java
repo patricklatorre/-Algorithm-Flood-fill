@@ -37,18 +37,15 @@ public class FloodFill
 
 	public static void DFS(int y, int x, boolean[][] visited, int[][] matrix, int n, int m) {
 		if(y > m || x > n) {
-			System.out.println("[ GREATER than margin ]");
 			return;
 		}
 		if(y < 0 || x < 0) {
-			System.out.println("[ LESSER than margin ]");
 			return;
 		}
 		if( matrix[y][x] == 2 ) {
 			return;
 		}
 		if(visited[y][x]) {
-			System.out.println("[ already visited ]");
 			return;
 		}
 		else {
