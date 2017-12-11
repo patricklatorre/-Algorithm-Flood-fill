@@ -11,18 +11,22 @@ public class AStarBonus
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		int[] source = new int[2];
-		System.out.print("Source XY coordinates: ");
-		source[0] = sc.nextInt();
-		source[1] = sc.nextInt();
-		System.out.println("-------------------------------------------------------");
+		System.out.println("==== Current layout ====");
 
-		int[] dest = new int[2];
-		System.out.print("Destination XY coordinates: ");
-		dest[0] = sc.nextInt();
-		dest[1] = sc.nextInt();
-		System.out.println("-------------------------------------------------------");
 
+
+
+
+
+
+		/*
+		*
+		* 	CHANGE LAYOUT OF GRID HERE
+		* 	0 = UNOCCUPIED SPACE
+		* 	2 = OBSTACLE
+		*
+		* 	!!! 1 is reserved for path
+		* */
 		int[][] matrix = {
 				{0, 2, 0, 2, 0},
 				{0, 2, 0, 0, 0},
@@ -31,6 +35,38 @@ public class AStarBonus
 				{0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0},
 		};
+
+
+
+
+
+
+
+		for (int i = 0; i <= 5; i++) {
+			for (int j = 0; j <= 4; j++) {
+				if (matrix[i][j] == 1)
+					System.out.print("P\t");
+				else if (matrix[i][j] == 2)
+					System.out.print("*\t");
+				else if (matrix[i][j] == 0)
+					System.out.print(".\t");
+			}
+			System.out.println();
+		}
+		System.out.println("-------------------------------------------------------");
+		System.out.println("* you may change layout of grid in code, refer to comments\n\n");
+
+		int[] source = new int[2];
+		System.out.print("Source XY coordinates (x <space> y): ");
+		source[0] = sc.nextInt();
+		source[1] = sc.nextInt();
+		System.out.println("-------------------------------------------------------");
+
+		int[] dest = new int[2];
+		System.out.print("Destination XY coordinates (x <space> y): ");
+		dest[0] = sc.nextInt();
+		dest[1] = sc.nextInt();
+		System.out.println("-------------------------------------------------------");
 
 		boolean found = DFS(source[1], source[0], matrix, 4, 5, dest[1], dest[0]);
 		if( !found )

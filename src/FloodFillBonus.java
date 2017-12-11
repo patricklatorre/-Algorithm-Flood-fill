@@ -1,26 +1,62 @@
 import java.util.Scanner;
 
-public class FloodFill
+public class FloodFillBonus
 {
 	static int filledCells = 0;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		int[] source = new int[2];
-		System.out.print("Source XY coordinates: ");
-		source[0] = sc.nextInt();
-		source[1] = sc.nextInt();
-		System.out.println("-------------------------------------------------------");
+		System.out.println("==== Current layout ====");
 
+
+
+
+
+
+
+
+		/*
+		* 	CHANGE LAYOUT OF GRID HERE
+		* 	0 = UNOCCUPIED SPACE
+		* 	2 = OBSTACLE
+		* */
 		int[][] matrix = {
 				{0, 0, 0, 2, 0},
 				{0, 0, 0, 2, 0},
 				{0, 0, 0, 2, 0},
-				{0, 2, 2, 2, 0},
+				{0, 2, 0, 2, 0},
 				{2, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0},
 		};
+
+
+
+
+
+
+
+
+
+		for (int i = 0; i <= 5; i++) {
+			for (int j = 0; j <= 4; j++) {
+				if (matrix[i][j] == 1)
+					System.out.print("P\t");
+				else if (matrix[i][j] == 2)
+					System.out.print("*\t");
+				else if (matrix[i][j] == 0)
+					System.out.print(".\t");
+			}
+			System.out.println();
+		}
+		System.out.println("-------------------------------------------------------");
+		System.out.println("* you may change layout of grid in code, refer to comments\n\n");
+
+		int[] source = new int[2];
+		System.out.print("Source XY coordinates (x <space> y): ");
+		source[0] = sc.nextInt();
+		source[1] = sc.nextInt();
+		System.out.println("-------------------------------------------------------");
 
 		boolean[][] visited = {
 				{false, false, false, false, false},
